@@ -5,10 +5,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import authRoutes from "../routes/auth.js";
-import userRoutes from "../routes/users.js";
-import { sayHello } from "./function";
-import User from "../models/User";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config();
 const app = express();
@@ -21,22 +19,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/api/auth", authRoutes);
-// app.use("/api/users", userRoutes);
-app.get("/api/test", sayHello);
-
-app.get("/api", (req, res) => {
-  res.send("HELLO");
-});
-
-app.get("/api/users/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const user = await User.findById(id);
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
-});
+app.use("/api/users", userRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL, {
