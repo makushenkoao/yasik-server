@@ -43,9 +43,9 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  // .then(() => {
-  //   app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-  // })
+  .then(() => {
+    console.log("MongoDB подключено успешно!");
+  })
   .catch((error) => console.log(`${error} did not connect`));
 
 module.exports = app;
