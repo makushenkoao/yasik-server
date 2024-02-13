@@ -32,11 +32,11 @@
 //   })
 //   .catch((error) => console.log(`${error} did not connect`));
 
-const express = require('express')
+import express from "express";
 const app = express();
 
-app.get('/api', (req, res) => {
-  res.send('Hello!');
+app.get("/api", (req, res) => {
+  res.send("Hello!");
 });
 
 module.exports = app;
