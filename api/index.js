@@ -19,9 +19,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.get("/test", sayHello);
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.get("/api/test", sayHello);
 
 app.get('/api', (req, res) => {
     res.send('HELLO')
