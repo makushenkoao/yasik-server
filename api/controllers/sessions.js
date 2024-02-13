@@ -66,8 +66,8 @@ export const joinSession = async (req, res) => {
       return res.status(404).json({ error: "Session not found" });
     }
 
-    if (!session.users.includes(userId)) {
-      session.users.push(userId);
+    if (!session.participants.includes(userId)) {
+      session.participants.push(userId);
       await session.save();
     }
 
