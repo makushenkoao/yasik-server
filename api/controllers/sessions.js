@@ -57,22 +57,23 @@ const getSessionsByUser = async (req, res) => {
 };
 
 export const joinSession = async (req, res) => {
+  const { sessionCode, userId } = req.body;
+
   try {
-    const { id } = req.params;
-    const { userId } = req.body;
-    const session = await Session.findById(id);
+    const session = await Session.findOne({ code: sessionCode });
 
     if (!session) {
-      return res.status(404).json({ message: "Session not found" });
+      return res.status(404).json({ error: "Session not found" });
     }
 
-    session.participants.push(userId);
+    if (!session.users.includes(userId)) {
+      session.users.push(userId);
+      await session.save();
+    }
 
-    await session.save();
-
-    res.status(200).json({ message: "Joined session successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(200).json(session);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
