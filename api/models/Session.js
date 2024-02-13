@@ -7,10 +7,7 @@ const SessionSchema = new mongoose.Schema(
             ref: 'User',
             required: true
         },
-        genre: {
-            type: String,
-            required: true
-        },
+        genres: [],
         code: {
             type: String,
             required: true,

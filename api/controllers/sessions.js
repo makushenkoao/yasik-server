@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const createSession = async (req, res) => {
   try {
-    const { creator, genre } = req.body;
+    const { creator, genres } = req.body;
 
     const uuid = uuidv4();
 
@@ -11,7 +11,7 @@ export const createSession = async (req, res) => {
 
     const newSession = new Session({
       creator,
-      genre,
+      genres,
       code,
     });
 
