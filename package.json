@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "api/index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node api/index.js",
     "dev": "nodemon api/index.js"
