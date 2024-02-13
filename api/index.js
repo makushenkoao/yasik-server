@@ -1,14 +1,14 @@
-import express from "express";
+// import express from "express";
 // import bodyParser from "body-parser";
 // import mongoose from "mongoose";
 // import cors from "cors";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 // import helmet from "helmet";
 // import morgan from "morgan";
 // import authRoutes from "./routes/auth.js";
 // import userRoutes from "./routes/users.js";
 //
-dotenv.config();
+// dotenv.config();
 // const app = express();
 // app.use(express.json());
 // app.use(helmet());
@@ -32,6 +32,7 @@ dotenv.config();
 //   })
 //   .catch((error) => console.log(`${error} did not connect`));
 
+const express = require('express')
 const app = express();
 
 import { v4 } from "uuid";
