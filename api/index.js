@@ -23,6 +23,11 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.get("/test", sayHello);
 
+app.get('/api', (req, res) => {
+    res.send('HELLO')
+});
+
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
