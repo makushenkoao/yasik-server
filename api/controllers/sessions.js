@@ -13,13 +13,13 @@ export const createSession = async (req, res) => {
       creator,
       genres,
       code,
+      participants: [creator],
     });
 
     await newSession.save();
 
     res.status(201).json(newSession);
   } catch (error) {
-    // В случае ошибки отправляем клиенту сообщение об ошибке
     res.status(500).json({ message: error.message });
   }
 };
@@ -94,7 +94,6 @@ export const addMatchesToSession = async (req, res) => {
 
     res.status(200).json({ message: "Matches added to session successfully" });
   } catch (error) {
-    // В случае ошибки отправляем лиенту сообщение об ошибке
     res.status(500).json({ message: error.message });
   }
 };
