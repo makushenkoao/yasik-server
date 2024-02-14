@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const createSession = async (req, res) => {
   try {
-    const { creator, genres } = req.body;
+    const { creator } = req.body;
 
     const uuid = uuidv4();
 
@@ -11,7 +11,7 @@ export const createSession = async (req, res) => {
 
     const newSession = new Session({
       creator,
-      genres,
+      genres: [],
       code,
       participants: [creator],
     });
@@ -93,6 +93,27 @@ export const addMatchesToSession = async (req, res) => {
     await session.save();
 
     res.status(200).json({ message: "Matches added to session successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateGenres = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { genres } = req.body;
+
+    const session = await Session.findById(id);
+
+    if (!session) {
+      return res.status(404).json({ message: "Session not found" });
+    }
+
+    session.genres = genres;
+
+    await session.save();
+
+    res.status(200).json({ message: "Genres updated successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
