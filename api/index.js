@@ -8,6 +8,7 @@ import morgan from "morgan";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import sessionsRoutes from "./routes/sessions";
+import favoritesRoutes from "./routes/favorites";
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/sessions", sessionsRoutes);
+app.use("/api/favorites", favoritesRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL, {
