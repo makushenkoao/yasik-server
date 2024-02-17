@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
+
 export const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -80,7 +81,7 @@ export const updatePassword = async (req, res) => {
     await user.save();
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: "Gmail",
       auth: {
         user: process.env.EMAIL,
         pass: process.env.PASSWORD,
