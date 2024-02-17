@@ -5,10 +5,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import sessionsRoutes from "./routes/sessions";
-import favoritesRoutes from "./routes/favorites";
+import authRoutes from "../src/routes/auth.js";
+import userRoutes from "../src/routes/users.js";
+import sessionsRoutes from "../src/routes/sessions";
+import favoritesRoutes from "../src/routes/favorites";
 
 dotenv.config();
 const app = express();
@@ -23,7 +23,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/sessions", sessionsRoutes);
-app.use("/api/favorites", favoritesRoutes);
+app.use("/api/favorites.js", favoritesRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL, {

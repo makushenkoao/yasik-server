@@ -1,18 +1,17 @@
 import express from "express";
 import {
+  addMatchesToSession,
   createSession,
   getSessionById,
-  joinSession,
-} from "../controllers/controllers";
+  joinSession, updateGenres,
+} from "../controllers/sessions";
 
 const router = express.Router();
 
-// router.get("/", getAllSessions);
 router.get("/:id", getSessionById);
 router.post("/", createSession);
 router.post("/join", joinSession);
-// TODO
-// router.post("/:id/matches", addMatchesToSession);
-// router.post("/:id/genres", updateGenres);
+router.post("/:id/matches", addMatchesToSession);
+router.post("/:id/genres", updateGenres);
 
 export default router;
