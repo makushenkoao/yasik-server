@@ -23,7 +23,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/sessions", sessionsRoutes);
-app.use("/api/favorites.js", favoritesRoutes);
+app.use("/api/favorites", favoritesRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL, {
