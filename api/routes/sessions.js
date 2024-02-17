@@ -3,7 +3,7 @@ import {
   createSession,
   getSessionById,
   joinSession,
-} from "../controllers/sessions";
+} from "../controllers/controllers";
 
 const router = express.Router();
 
