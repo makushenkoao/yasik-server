@@ -99,7 +99,7 @@ export const updatePassword = async (req, res) => {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
-        return res.status(500).json({ msg: `Error sending email ${process.env.EMAIL}` });
+        return res.status(500).json({ msg: `Error sending email` });
       } else {
         console.log("Email sent: " + info.response);
         res
