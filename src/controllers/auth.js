@@ -71,7 +71,9 @@ export const updatePassword = async (req, res) => {
 
     if (!user) return res.status(400).json({ msg: "User not found" });
 
-    const newPassword = uuidv4();
+    const uuid = uuidv4();
+
+    const newPassword = uuid.slice(0, 10);
 
     const salt = await bcrypt.genSalt();
     const newPasswordHash = await bcrypt.hash(newPassword, salt);
