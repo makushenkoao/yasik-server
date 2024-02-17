@@ -1,8 +1,5 @@
 import express from "express";
-import {
-  deleteUser,
-  getUser, updateUser,
-} from "../controllers/users.js";
+import { deleteUser, updateUser } from "../controllers/users.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -10,5 +7,6 @@ const router = express.Router();
 // router.get("/:id", verifyToken, getUser);
 router.put("/:id", verifyToken, updateUser);
 router.delete("/:id", verifyToken, deleteUser);
+// TODO: forgot password
 
 export default router;

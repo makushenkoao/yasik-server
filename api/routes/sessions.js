@@ -1,10 +1,8 @@
 import express from "express";
 import {
-  addMatchesToSession,
   createSession,
-  getAllSessions,
   getSessionById,
-  joinSession, updateGenres,
+  joinSession,
 } from "../controllers/sessions";
 
 const router = express.Router();

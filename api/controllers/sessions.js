@@ -24,15 +24,6 @@ export const createSession = async (req, res) => {
   }
 };
 
-export const getAllSessions = async (req, res) => {
-  try {
-    const sessions = await Session.find();
-    res.status(200).json(sessions);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 export const getSessionById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,15 +37,15 @@ export const getSessionById = async (req, res) => {
   }
 };
 
-const getSessionsByUser = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const sessions = await Session.find({ participants: userId });
-    res.status(200).json(sessions);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+// const getSessionsByUser = async (req, res) => {
+//   try {
+//     const { userId } = req.params;
+//     const sessions = await Session.find({ participants: userId });
+//     res.status(200).json(sessions);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 export const joinSession = async (req, res) => {
   const { sessionCode, userId } = req.body;
@@ -77,44 +68,44 @@ export const joinSession = async (req, res) => {
   }
 };
 
-export const addMatchesToSession = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { matches } = req.body;
-
-    const session = await Session.findById(id);
-
-    if (!session) {
-      return res.status(404).json({ message: "Session not found" });
-    }
-
-    session.matches = matches;
-
-    await session.save();
-
-    res.status(200).json({ message: "Matches added to session successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-export const updateGenres = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { genres } = req.body;
-
-    const session = await Session.findById(id);
-
-    if (!session) {
-      return res.status(404).json({ message: "Session not found" });
-    }
-
-    session.genres = genres;
-
-    await session.save();
-
-    res.status(200).json({ message: "Genres updated successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+// export const addMatchesToSession = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { matches } = req.body;
+//
+//     const session = await Session.findById(id);
+//
+//     if (!session) {
+//       return res.status(404).json({ message: "Session not found" });
+//     }
+//
+//     session.matches = matches;
+//
+//     await session.save();
+//
+//     res.status(200).json({ message: "Matches added to session successfully" });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+//
+// export const updateGenres = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { genres } = req.body;
+//
+//     const session = await Session.findById(id);
+//
+//     if (!session) {
+//       return res.status(404).json({ message: "Session not found" });
+//     }
+//
+//     session.genres = genres;
+//
+//     await session.save();
+//
+//     res.status(200).json({ message: "Genres updated successfully" });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
