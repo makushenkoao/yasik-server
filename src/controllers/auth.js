@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 import { v4 as uuidv4 } from "uuid";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 
 export const register = async (req, res) => {
@@ -69,14 +71,11 @@ export const updatePassword = async (req, res) => {
 
     if (!user) return res.status(400).json({ msg: "User not found" });
 
-    // Generate new password
-    const newPassword = uuidv4(); // Using UUID as the new password
+    const newPassword = uuidv4();
 
-    // Hash the new password
     const salt = await bcrypt.genSalt();
     const newPasswordHash = await bcrypt.hash(newPassword, salt);
 
-    // Update user's password in the database
     user.password = newPasswordHash;
     await user.save();
 
@@ -98,7 +97,7 @@ export const updatePassword = async (req, res) => {
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
-        return res.status(500).json({ msg: "Error sending email" });
+        return res.status(500).json({ msg: `Error sending email ${process.env.EMAIL}` });
       } else {
         console.log("Email sent: " + info.response);
         res
