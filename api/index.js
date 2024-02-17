@@ -5,10 +5,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import authRoutes from "./routes/auth";
-import userRoutes from "./routes/users";
-import sessionsRoutes from "./routes/sessions";
-import favoritesRoutes from "./routes/favorites";
+import authRoutes from "../src/routes/auth";
+import userRoutes from "../src/routes/users";
+import sessionsRoutes from "../src/routes/sessions";
+import favoritesRoutes from "../src/routes/favorites";
 
 dotenv.config();
 const app = express();

@@ -4,7 +4,7 @@ import {
   createSession,
   getSessionById,
   joinSession, updateGenres,
-} from "../controllers/controllers";
+} from "../controllers/session";
 
 const router = express.Router();
 
