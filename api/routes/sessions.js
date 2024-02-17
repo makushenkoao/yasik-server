@@ -9,11 +9,12 @@ import {
 
 const router = express.Router();
 
-router.get("/", getAllSessions);
+// router.get("/", getAllSessions);
 router.get("/:id", getSessionById);
 router.post("/", createSession);
 router.post("/join", joinSession);
-router.post("/:id/matches", addMatchesToSession);
-router.post("/:id/genres", updateGenres);
+// TODO
+// router.post("/:id/matches", addMatchesToSession);
+// router.post("/:id/genres", updateGenres);
 
 export default router;
